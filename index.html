@@ -96,7 +96,10 @@
         }
 
         .btn {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             padding: 1rem 2rem;
             font-family: var(--font-heading);
             font-weight: 600;
@@ -130,6 +133,19 @@
             background-color: var(--primary-color);
             color: var(--text-light);
             transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white !important;
+            border: 2px solid #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #20b858;
+            border-color: #20b858;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Navbar */
@@ -525,9 +541,19 @@
             color: var(--primary-color);
         }
 
-        .contact-details p {
+        .contact-details p, .contact-details a {
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
         }
 
         .map-container {
@@ -586,6 +612,13 @@
         textarea.form-control {
             resize: vertical;
             min-height: 120px;
+        }
+        
+        #formStatus {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
         }
 
         /* Footer */
@@ -716,8 +749,32 @@
                 color: var(--primary-color);
             }
 
+            .section-padding {
+                padding: 3rem 0;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
+                margin-top: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .about-image::before {
+                display: none;
             }
 
             .features-list {
@@ -725,6 +782,10 @@
             }
 
             .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-cards-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -767,8 +828,8 @@
                 <h1>Crafting Elegance in <br>Stainless Steel</h1>
                 <p>Premium manufacturers and distributors of functional, decorative, and beautiful steel furniture. From luxurious jhulas to custom dining sets.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Visit Store</a>
-                    <a href="#products" class="btn btn-outline" style="border-color: white; color: white;">View Collection</a>
+                    <a href="tel:+919227312929" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call Now</a>
+                    <a href="https://wa.me/919227312929?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
                 </div>
             </div>
         </div>
@@ -833,6 +894,7 @@
                             <li><i class="fa-solid fa-check"></i> Traditional & Modern Designs</li>
                             <li><i class="fa-solid fa-check"></i> Complete Hardware Kits</li>
                         </ul>
+                        <a href="https://wa.me/919227312929?text=I%20am%20interested%20in%20your%20Steel%20Jhulas" target="_blank" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
                     </div>
                 </div>
 
@@ -847,6 +909,7 @@
                             <li><i class="fa-solid fa-check"></i> Polished Steel Framework</li>
                             <li><i class="fa-solid fa-check"></i> Custom Upholstery Options</li>
                         </ul>
+                        <a href="https://wa.me/919227312929?text=I%20am%20interested%20in%20your%20Steel%20Sofas" target="_blank" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
                     </div>
                 </div>
 
@@ -861,12 +924,9 @@
                             <li><i class="fa-solid fa-check"></i> Designer Tipoi / Center Tables</li>
                             <li><i class="fa-solid fa-check"></i> Home Fitting Items & Curtain Rods</li>
                         </ul>
+                        <a href="https://wa.me/919227312929?text=I%20am%20interested%20in%20your%20Dining%20Tables" target="_blank" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
                     </div>
                 </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#contact" class="btn btn-primary">Enquire For Complete Catalog</a>
             </div>
         </div>
     </section>
@@ -918,12 +978,12 @@
                         </div>
                     </div>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="contact-cards-grid">
                         <div class="contact-card" style="padding: 1.5rem;">
                             <div class="contact-icon" style="font-size: 1.5rem;"><i class="fa-solid fa-phone"></i></div>
                             <div class="contact-details">
                                 <h3>Call Us</h3>
-                                <p style="font-weight: 500; color: var(--primary-color);">092273 12929</p>
+                                <p style="font-weight: 500; color: var(--primary-color);"><a href="tel:+919227312929" style="color:var(--primary-color);">092273 12929</a></p>
                             </div>
                         </div>
                         <div class="contact-card" style="padding: 1.5rem;">
@@ -943,18 +1003,18 @@
 
                 <div class="contact-form" id="quote">
                     <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--primary-color);">Send an Inquiry</h3>
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will contact you soon.');">
+                    <form id="contactForm" method="POST">
                         <div class="form-group">
                             <label class="form-label" for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required placeholder="Your Name">
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Your Name">
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" required placeholder="Your Phone Number">
+                            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="Your Phone Number">
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="product">Product Interest</label>
-                            <select id="product" class="form-control">
+                            <select id="product" name="product" class="form-control">
                                 <option>Steel Jhula / Swing</option>
                                 <option>Sofa / Sofa-Bed</option>
                                 <option>Dining Table / Tipoi</option>
@@ -963,11 +1023,17 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="requirement">Message</label>
-                            <textarea id="requirement" class="form-control" placeholder="Tell us what you are looking for..."></textarea>
+                            <label class="form-label" for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell us what you are looking for..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                        <div id="formStatus"></div>
                     </form>
+                    
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem; display: block; margin-bottom: 0.5rem;">OR</span>
+                         <a href="https://wa.me/919227312929?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" class="btn btn-whatsapp" target="_blank" style="width: 100%;"><i class="fa-brands fa-whatsapp"></i> Send Message on WhatsApp</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1016,7 +1082,7 @@
                 <div>
                     <h4 class="footer-title">Contact</h4>
                     <ul class="footer-links">
-                        <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> 092273 12929</li>
+                        <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> <a href="tel:+919227312929">092273 12929</a></li>
                         <li style="line-height: 1.4; margin-top: 10px;"><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Annapurna estate, B27,<br>Bhilwada Road, Satyam Nagar,<br>Ahmedabad 380026</li>
                     </ul>
                 </div>
@@ -1067,6 +1133,38 @@
                 }
             });
         });
+
+        // AJAX Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                formStatus.innerHTML = '<span style="color: #64748b;"><i class="fa-solid fa-spinner fa-spin"></i> Sending message...</span>';
+                
+                const formData = new FormData(contactForm);
+
+                try {
+                    const response = await fetch('contact.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+
+                    if (result.status === 'success') {
+                        formStatus.innerHTML = `<span style="color: #15803d;"><i class="fa-solid fa-circle-check"></i> ${result.message}</span>`;
+                        contactForm.reset();
+                    } else {
+                        formStatus.innerHTML = `<span style="color: #b91c1c;"><i class="fa-solid fa-circle-exclamation"></i> ${result.message}</span>`;
+                    }
+                } catch (error) {
+                    formStatus.innerHTML = '<span style="color: #b91c1c;"><i class="fa-solid fa-triangle-exclamation"></i> Could not connect to server.</span>';
+                    console.error('Submission Error:', error);
+                }
+            });
+        }
     </script>
 </body>
 </html>
