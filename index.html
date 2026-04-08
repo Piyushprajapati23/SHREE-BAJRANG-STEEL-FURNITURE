@@ -19,7 +19,6 @@
             /* Sleek, metallic & modern furniture color palette */
             --bg-color: #f8f9fa;
             --surface-color: #ffffff;
-            --surface-hover: #f1f3f5;
             --primary-color: #0f172a; /* Deep slate */
             --primary-hover: #1e293b;
             --accent-color: #d4af37; /* Elegant metallic gold/brass accent */
@@ -441,17 +440,6 @@
             object-position: center 32%;
         }
 
-        .product-img.inquiry-trigger {
-            cursor: pointer;
-            transition: transform 0.45s ease, filter 0.3s ease;
-        }
-
-        .product-card:hover .product-img.inquiry-trigger,
-        .product-img.inquiry-trigger:hover {
-            transform: scale(1.04);
-            filter: saturate(1.05);
-        }
-
         .product-content {
             padding: 0.85rem;
             display: flex;
@@ -545,7 +533,6 @@
         }
 
         .gallery-item:focus-visible,
-        .product-img.inquiry-trigger:focus-visible,
         .modal-close:focus-visible,
         .modal-submit:focus-visible {
             outline: 3px solid rgba(212, 175, 55, 0.45);
@@ -762,13 +749,47 @@
         }
 
         .map-container {
-            height: 16rem;
+            height: 13.5rem;
             width: 100%;
-            border-radius: 16px;
+            border-radius: 18px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            margin-top: 1rem;
-            box-shadow: var(--shadow-sm);
+            margin-top: 0.85rem;
+            box-shadow: var(--shadow-md);
+            background: var(--surface-color);
+        }
+
+        .map-frame {
+            height: calc(100% - 3rem);
+            overflow: hidden;
+        }
+
+        .map-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.7rem 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .map-caption {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .map-container iframe {
@@ -1165,6 +1186,10 @@
             .footer-grid {
                 gap: 2rem;
             }
+
+            .map-container {
+                height: 16.5rem;
+            }
         }
 
         @media (max-width: 767px) {
@@ -1190,12 +1215,6 @@
             .nav-links a {
                 color: var(--primary-color) !important;
                 font-size: 0.95rem;
-            }
-        }
-
-        @media (min-width: 992px) {
-            .hero h1 {
-                font-size: 3.7rem;
             }
         }
 
@@ -1518,9 +1537,17 @@
                         </div>
                     </div>
                     
-                    <div class="map-container" style="height: 400px;">
-                        <!-- Map embedded near Satyam Nagar, Ahmedabad -->
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14686.793739701741!2d72.63920790000001!3d23.03484215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e865f3f01b315%3A0xe54e17fd8ae1fccc!2sSatyam%20Nagar%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container">
+                        <div class="map-frame">
+                            <iframe src="https://www.google.com/maps?q=B%2F27%2C%20Annapurna%20Estate%2C%20Opp.%20Shiv%20Shakti%20Estate%2C%20Nr.%20Sanjay%20Chowk%2C%20Bhilwada%20Road%2C%20Amraiwadi%2C%20Ahmedabad%2C%20Gujarat%20380026&z=17&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="map-actions">
+                            <span class="map-caption">Find us on Google Maps</span>
+                            <a href="https://maps.app.goo.gl/AaLqwUssJFZmszjE6?g_st=aw" target="_blank" rel="noopener noreferrer" class="map-link">
+                                <i class="fa-solid fa-location-arrow"></i>
+                                Open Map
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
