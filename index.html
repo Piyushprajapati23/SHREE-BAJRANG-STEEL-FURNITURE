@@ -554,14 +554,14 @@
 
         .inquiry-modal-dialog {
             position: relative;
-            width: min(100%, 420px);
+            width: min(100%, 380px);
             max-height: calc(100vh - 3rem);
             overflow-y: auto;
             background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 18px;
+            border-radius: 20px;
             border: 1px solid rgba(148, 163, 184, 0.2);
             box-shadow: 0 30px 80px rgba(15, 23, 42, 0.28);
-            padding: 1.5rem;
+            padding: 1.25rem;
             transform: translateY(20px) scale(0.96);
             transition: transform 0.32s ease;
         }
@@ -572,15 +572,15 @@
 
         .modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 42px;
-            height: 42px;
+            top: 0.85rem;
+            right: 0.85rem;
+            width: 38px;
+            height: 38px;
             border: none;
             border-radius: 50%;
             background: rgba(15, 23, 42, 0.06);
             color: var(--primary-color);
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
@@ -599,37 +599,37 @@
             gap: 0.5rem;
             background: rgba(212, 175, 55, 0.12);
             color: #8a6b14;
-            padding: 0.5rem 0.9rem;
+            padding: 0.42rem 0.75rem;
             border-radius: 999px;
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.75rem;
         }
 
         .modal-title {
-            font-size: 1.55rem;
+            font-size: 1.35rem;
             line-height: 1.1;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
         }
 
         .modal-text {
             color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-size: 0.92rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.86rem;
         }
 
         .modal-product-note {
             background: #fff;
             border: 1px solid rgba(212, 175, 55, 0.28);
             border-radius: 12px;
-            padding: 0.8rem 0.95rem;
-            margin-bottom: 1rem;
+            padding: 0.7rem 0.85rem;
+            margin-bottom: 0.85rem;
             color: var(--primary-color);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
         }
 
         .modal-product-note span {
@@ -637,39 +637,41 @@
         }
 
         .modal-form .form-group {
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.7rem;
         }
 
         .modal-form .form-control {
             background: #fff;
             border-radius: 12px;
-            padding: 0.85rem 0.95rem;
+            padding: 0.78rem 0.9rem;
+            font-size: 0.92rem;
         }
 
         .modal-form textarea.form-control {
-            min-height: 90px;
+            min-height: 72px;
         }
 
         .modal-submit {
             width: 100%;
             border: none;
-            margin-top: 0.35rem;
+            margin-top: 0.2rem;
             justify-content: center;
-            font-size: 0.92rem;
+            font-size: 0.86rem;
+            padding: 0.9rem 1rem;
             cursor: pointer;
         }
 
         .modal-helper {
             color: var(--text-muted);
-            font-size: 0.82rem;
+            font-size: 0.76rem;
             text-align: center;
-            margin-top: 0.85rem;
+            margin-top: 0.7rem;
         }
 
         .modal-form-status {
             min-height: 1.4rem;
-            margin-top: 0.75rem;
-            font-size: 0.92rem;
+            margin-top: 0.55rem;
+            font-size: 0.84rem;
             font-weight: 600;
             text-align: center;
         }
@@ -976,20 +978,18 @@
             .inquiry-modal-dialog {
                 width: 100%;
                 max-height: calc(100vh - 2rem);
-                padding: 1.4rem;
+                padding: 1.1rem;
                 border-radius: 18px;
             }
 
             .modal-title {
-                font-size: 1.55rem;
+                font-size: 1.2rem;
                 padding-right: 2.5rem;
             }
 
             .modal-close {
-                top: 0.85rem;
-                right: 0.85rem;
-                width: 40px;
-                height: 40px;
+                width: 36px;
+                height: 36px;
             }
         }
     </style>
@@ -1218,11 +1218,6 @@
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
                         <div id="formStatus"></div>
                     </form>
-                    
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <span style="color: var(--text-muted); font-size: 0.9rem; display: block; margin-bottom: 0.5rem;">OR</span>
-                         <a href="https://wa.me/919426436529?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="width: 100%;"><i class="fa-brands fa-whatsapp"></i> Send Message on WhatsApp</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1242,7 +1237,7 @@
                         <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div class="contact-details">
                             <h3>Store Location</h3>
-                            <p>Annapurna estate, B27, bhilwada road,<br>near Sanjay chok, Gita Nagar, Satyam Nagar,<br>Ahmedabad, Gujarat 380026</p>
+                            <p>B/27, Annapurna Estate,<br>Opp. Shiv Shakti Estate, Nr. Sanjay Chowk,<br>Bhilwada Road, Amraiwadi,<br>Ahmedabad, Gujarat 380026</p>
                         </div>
                     </div>
                     
@@ -1285,9 +1280,9 @@
                     </a>
                     <p>Manufacturers, distributors, and sellers of functional and decorative household equipment, including premium steel swings, sofas, and dining sets.</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/bajrang.vishnoi.3" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://wa.me/919426436529?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -1316,7 +1311,7 @@
                     <h4 class="footer-title">Contact</h4>
                     <ul class="footer-links">
                         <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> <a href="tel:+919426436529">+91 94264 36529</a></li>
-                        <li style="line-height: 1.4; margin-top: 10px;"><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Annapurna estate, B27,<br>Bhilwada Road, Satyam Nagar,<br>Ahmedabad 380026</li>
+                        <li style="line-height: 1.4; margin-top: 10px;"><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> B/27, Annapurna Estate,<br>Opp. Shiv Shakti Estate,<br>Nr. Sanjay Chowk, Bhilwada Road,<br>Amraiwadi, Ahmedabad 380026</li>
                     </ul>
                 </div>
             </div>
@@ -1338,7 +1333,7 @@
                 Quick Inquiry
             </div>
             <h3 class="modal-title" id="inquiryModalTitle">Ask About This Design</h3>
-            <p class="modal-text">Share your details and we will open WhatsApp with a ready-to-send message for this product.</p>
+            <p class="modal-text">Share your details and we will prepare a WhatsApp message instantly.</p>
             <div class="modal-product-note">Inquiry for: <span id="modalProductName">Selected Product</span></div>
 
             <form class="modal-form" id="inquiryForm" novalidate>
@@ -1353,14 +1348,14 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="inquiryMessage">Message</label>
-                    <textarea id="inquiryMessage" name="message" class="form-control" placeholder="Tell us anything specific you need"></textarea>
+                    <textarea id="inquiryMessage" name="message" class="form-control" placeholder="Optional details"></textarea>
                 </div>
                 <button type="submit" class="btn btn-whatsapp modal-submit">
                     <i class="fa-brands fa-whatsapp"></i>
                     Send Inquiry on WhatsApp
                 </button>
                 <div class="modal-form-status" id="modalFormStatus" aria-live="polite"></div>
-                <p class="modal-helper">No page reload, no extra steps. We will prepare the WhatsApp message for you instantly.</p>
+                <p class="modal-helper">Fast, simple, and no page reload.</p>
             </form>
         </div>
     </div>
