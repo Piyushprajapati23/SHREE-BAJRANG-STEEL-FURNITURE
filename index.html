@@ -415,6 +415,21 @@
             border-bottom: 1px solid var(--border-color);
         }
 
+        .product-img.product-img-jhula {
+            object-position: center 32%;
+        }
+
+        .product-img.inquiry-trigger {
+            cursor: pointer;
+            transition: transform 0.45s ease, filter 0.3s ease;
+        }
+
+        .product-card:hover .product-img.inquiry-trigger,
+        .product-img.inquiry-trigger:hover {
+            transform: scale(1.04);
+            filter: saturate(1.05);
+        }
+
         .product-content {
             padding: 2rem;
         }
@@ -500,6 +515,166 @@
 
         .gallery-item:hover .gallery-overlay h4 {
             transform: translateY(0);
+        }
+
+        .gallery-item:focus-visible,
+        .product-img.inquiry-trigger:focus-visible,
+        .modal-close:focus-visible,
+        .modal-submit:focus-visible {
+            outline: 3px solid rgba(212, 175, 55, 0.45);
+            outline-offset: 3px;
+        }
+
+        .inquiry-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+        }
+
+        .inquiry-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .inquiry-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(4px);
+        }
+
+        .inquiry-modal-dialog {
+            position: relative;
+            width: min(100%, 520px);
+            max-height: calc(100vh - 3rem);
+            overflow-y: auto;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.28);
+            padding: 2rem;
+            transform: translateY(20px) scale(0.96);
+            transition: transform 0.32s ease;
+        }
+
+        .inquiry-modal.active .inquiry-modal-dialog {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.06);
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(212, 175, 55, 0.18);
+            transform: rotate(90deg);
+        }
+
+        .modal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.12);
+            color: #8a6b14;
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            line-height: 1.1;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-text {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.98rem;
+        }
+
+        .modal-product-note {
+            background: #fff;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 14px;
+            padding: 1rem 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .modal-product-note span {
+            color: var(--accent-color);
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .modal-form .form-control {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1rem 1rem;
+        }
+
+        .modal-form textarea.form-control {
+            min-height: 110px;
+        }
+
+        .modal-submit {
+            width: 100%;
+            border: none;
+            margin-top: 0.5rem;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .modal-helper {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .modal-form-status {
+            min-height: 1.4rem;
+            margin-top: 0.75rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        body.modal-open {
+            overflow: hidden;
         }
 
         /* Contact Section */
@@ -792,6 +967,29 @@
             .contact-form {
                 padding: 1.5rem;
             }
+
+            .inquiry-modal {
+                padding: 1rem;
+            }
+
+            .inquiry-modal-dialog {
+                width: 100%;
+                max-height: calc(100vh - 2rem);
+                padding: 1.4rem;
+                border-radius: 18px;
+            }
+
+            .modal-title {
+                font-size: 1.55rem;
+                padding-right: 2.5rem;
+            }
+
+            .modal-close {
+                top: 0.85rem;
+                right: 0.85rem;
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -829,7 +1027,7 @@
                 <p>Premium manufacturers and distributors of functional, decorative, and beautiful steel furniture. From luxurious jhulas to custom dining sets.</p>
                 <div class="hero-buttons">
                     <a href="tel:+919426436529" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call Now</a>
-                    <a href="https://wa.me/919426436529?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+                    <a href="https://wa.me/919426436529?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
                 </div>
             </div>
         </div>
@@ -839,7 +1037,7 @@
     <section class="section-padding" id="about">
         <div class="container about-grid">
             <div class="about-image">
-                <img src="images/img-10.jpeg" alt="Beautiful Steel Jhula on Balcony">
+                <img src="images/img-10.jpeg" alt="Beautiful Steel Jhula on Balcony" loading="lazy" decoding="async">
             </div>
             <div class="about-text">
                 <span class="section-subtitle">Since 1986</span>
@@ -885,7 +1083,7 @@
             <div class="products-grid">
                 <!-- Product 1 -->
                 <div class="product-card">
-                    <img src="images/collection-jhula.jpg" alt="Premium Steel Jhula" class="product-img">
+                    <img src="images/img-7.jpeg" alt="Premium Steel Jhula" class="product-img product-img-jhula inquiry-trigger" data-product="Steel Jhulas & Swings" tabindex="0" role="button" aria-label="Open inquiry for Steel Jhulas and Swings" loading="lazy" decoding="async">
                     <div class="product-content">
                         <h3 class="product-title">Steel Jhulas & Swings</h3>
                         <p class="product-desc">Beautifully crafted stainless steel hammock swings that bring traditional relaxation to modern homes.</p>
@@ -894,13 +1092,13 @@
                             <li><i class="fa-solid fa-check"></i> Traditional & Modern Designs</li>
                             <li><i class="fa-solid fa-check"></i> Complete Hardware Kits</li>
                         </ul>
-                        <a href="https://wa.me/919426436529?text=I%20am%20interested%20in%20your%20Steel%20Jhulas" target="_blank" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
+                        <a href="https://wa.me/919426436529?text=I%20am%20interested%20in%20your%20Steel%20Jhulas" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
                     </div>
                 </div>
 
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <img src="images/collection-sofa.jpg" alt="Premium Steel Sofa Bed" class="product-img">
+                    <img src="images/collection-sofa.jpg" alt="Premium Steel Sofa Bed" class="product-img inquiry-trigger" data-product="Sofas & Sofa-Beds" tabindex="0" role="button" aria-label="Open inquiry for Sofas and Sofa-Beds" loading="lazy" decoding="async">
                     <div class="product-content">
                         <h3 class="product-title">Sofas & Sofa-Beds</h3>
                         <p class="product-desc">Durable and exceptionally comfortable polished stainless steel 3-seater sofas and sofa-cum-beds.</p>
@@ -909,13 +1107,13 @@
                             <li><i class="fa-solid fa-check"></i> Polished Steel Framework</li>
                             <li><i class="fa-solid fa-check"></i> Custom Upholstery Options</li>
                         </ul>
-                        <a href="https://wa.me/919426436529?text=I%20am%20interested%20in%20your%20Steel%20Sofas" target="_blank" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
+                        <a href="https://wa.me/919426436529?text=I%20am%20interested%20in%20your%20Steel%20Sofas" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
                     </div>
                 </div>
 
                 <!-- Product 3 -->
                 <div class="product-card">
-                    <img src="images/collection-dining.jpg" alt="Premium Steel Dining Set" class="product-img">
+                    <img src="images/collection-dining.jpg" alt="Premium Steel Dining Set" class="product-img inquiry-trigger" data-product="Dining & Living Sets" tabindex="0" role="button" aria-label="Open inquiry for Dining and Living Sets" loading="lazy" decoding="async">
                     <div class="product-content">
                         <h3 class="product-title">Dining & Living Sets</h3>
                         <p class="product-desc">Elegant dining tables and tipois (center tables) that act as the perfect centerpiece.</p>
@@ -924,7 +1122,7 @@
                             <li><i class="fa-solid fa-check"></i> Designer Tipoi / Center Tables</li>
                             <li><i class="fa-solid fa-check"></i> Home Fitting Items & Curtain Rods</li>
                         </ul>
-                        <a href="https://wa.me/919426436529?text=I%20am%20interested%20in%20your%20Dining%20Tables" target="_blank" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
+                        <a href="https://wa.me/919426436529?text=I%20am%20interested%20in%20your%20Dining%20Tables" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
                     </div>
                 </div>
             </div>
@@ -940,40 +1138,40 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/img-1.jpeg" alt="Stainless Steel Jhula with White Canopy">
+                <div class="gallery-item inquiry-trigger" data-product="Canvas Canopy Jhula" tabindex="0" role="button" aria-label="Open inquiry for Canvas Canopy Jhula">
+                    <img src="images/img-1.jpeg" alt="Stainless Steel Jhula with White Canopy" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Canvas Canopy Jhula</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-2.jpeg" alt="Stainless Steel Jhula with Blue Canopy">
+                <div class="gallery-item inquiry-trigger" data-product="Blue Shade Jhula" tabindex="0" role="button" aria-label="Open inquiry for Blue Shade Jhula">
+                    <img src="images/img-2.jpeg" alt="Stainless Steel Jhula with Blue Canopy" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Blue Shade Jhula</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-3.jpeg" alt="Stainless Steel Hanging Balcony Chair">
+                <div class="gallery-item inquiry-trigger" data-product="Balcony Hanging Chair" tabindex="0" role="button" aria-label="Open inquiry for Balcony Hanging Chair">
+                    <img src="images/img-3.jpeg" alt="Stainless Steel Hanging Balcony Chair" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Balcony Hanging Chair</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-4.jpeg" alt="Steel Jhula with Wooden Finish">
+                <div class="gallery-item inquiry-trigger" data-product="Wooden Finish Swing" tabindex="0" role="button" aria-label="Open inquiry for Wooden Finish Swing">
+                    <img src="images/img-4.jpeg" alt="Steel Jhula with Wooden Finish" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Wooden Finish Swing</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-5.jpeg" alt="Indoor Chandelier Wooden Swing">
+                <div class="gallery-item inquiry-trigger" data-product="Indoor Wooden Swing" tabindex="0" role="button" aria-label="Open inquiry for Indoor Wooden Swing">
+                    <img src="images/img-5.jpeg" alt="Indoor Chandelier Wooden Swing" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Indoor Wooden Swing</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-6.jpeg" alt="Sleek Steel Swing on Wooden Deck">
+                <div class="gallery-item inquiry-trigger" data-product="Minimalist Steel Swing" tabindex="0" role="button" aria-label="Open inquiry for Minimalist Steel Swing">
+                    <img src="images/img-6.jpeg" alt="Sleek Steel Swing on Wooden Deck" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Minimalist Steel Swing</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-7.jpeg" alt="Premium Balcony Swing">
+                <div class="gallery-item inquiry-trigger" data-product="Premium Balcony Jhula" tabindex="0" role="button" aria-label="Open inquiry for Premium Balcony Jhula">
+                    <img src="images/img-7.jpeg" alt="Premium Balcony Swing" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Premium Balcony Jhula</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-8.jpeg" alt="Steel Swing with Purple Cushion">
+                <div class="gallery-item inquiry-trigger" data-product="Cushioned Sofa Swing" tabindex="0" role="button" aria-label="Open inquiry for Cushioned Sofa Swing">
+                    <img src="images/img-8.jpeg" alt="Steel Swing with Purple Cushion" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Cushioned Sofa Swing</h4></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img-9.jpeg" alt="Classic Steel Hanging Swing">
+                <div class="gallery-item inquiry-trigger" data-product="Classic Hanging Swing" tabindex="0" role="button" aria-label="Open inquiry for Classic Hanging Swing">
+                    <img src="images/img-9.jpeg" alt="Classic Steel Hanging Swing" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><h4>Classic Hanging Swing</h4></div>
                 </div>
             </div>
@@ -1022,7 +1220,7 @@
                     
                     <div style="text-align: center; margin-top: 1.5rem;">
                         <span style="color: var(--text-muted); font-size: 0.9rem; display: block; margin-bottom: 0.5rem;">OR</span>
-                         <a href="https://wa.me/919426436529?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" class="btn btn-whatsapp" target="_blank" style="width: 100%;"><i class="fa-brands fa-whatsapp"></i> Send Message on WhatsApp</a>
+                         <a href="https://wa.me/919426436529?text=Hello%20Shree%20Bajrang%20Steel%20Furniture,%20I%20want%20to%20inquire%20about%20your%20products" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="width: 100%;"><i class="fa-brands fa-whatsapp"></i> Send Message on WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -1128,45 +1326,101 @@
         </div>
     </footer>
 
+    <div class="inquiry-modal" id="inquiryModal" aria-hidden="true">
+        <div class="inquiry-modal-overlay" data-close-modal="true"></div>
+        <div class="inquiry-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="inquiryModalTitle">
+            <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close inquiry form">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-badge">
+                <i class="fa-brands fa-whatsapp"></i>
+                Quick Inquiry
+            </div>
+            <h3 class="modal-title" id="inquiryModalTitle">Ask About This Design</h3>
+            <p class="modal-text">Share your details and we will open WhatsApp with a ready-to-send message for this product.</p>
+            <div class="modal-product-note">Inquiry for: <span id="modalProductName">Selected Product</span></div>
+
+            <form class="modal-form" id="inquiryForm" novalidate>
+                <input type="hidden" id="inquiryProduct" name="product">
+                <div class="form-group">
+                    <label class="form-label" for="inquiryName">Name</label>
+                    <input type="text" id="inquiryName" name="name" class="form-control" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="inquiryPhone">Phone Number</label>
+                    <input type="tel" id="inquiryPhone" name="phone" class="form-control" required inputmode="tel" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="inquiryMessage">Message</label>
+                    <textarea id="inquiryMessage" name="message" class="form-control" placeholder="Tell us anything specific you need"></textarea>
+                </div>
+                <button type="submit" class="btn btn-whatsapp modal-submit">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Send Inquiry on WhatsApp
+                </button>
+                <div class="modal-form-status" id="modalFormStatus" aria-live="polite"></div>
+                <p class="modal-helper">No page reload, no extra steps. We will prepare the WhatsApp message for you instantly.</p>
+            </form>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
         // Sticky Navbar effect
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
 
         // Mobile Menu Toggle
         const mobileBtn = document.getElementById('mobileBtn');
         const navLinks = document.getElementById('navLinks');
         const navItems = document.querySelectorAll('.nav-links a');
 
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        });
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileBtn.querySelector('i');
+                if (!icon) {
+                    return;
+                }
 
-        // Close mobile menu when clicking a link
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                if(mobileBtn.querySelector('i')) {
-                    mobileBtn.querySelector('i').classList.remove('fa-xmark');
-                    mobileBtn.querySelector('i').classList.add('fa-bars');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
                 }
             });
-        });
+
+            // Close mobile menu when clicking a link
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = mobileBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+
+        function buildWhatsAppUrl(productName, name, phone, message) {
+            const whatsappMessage = `Hello, I am interested in ${productName}.\nName: ${name}\nPhone: ${phone}\nMessage: ${message || 'Not provided'}`;
+            return `https://wa.me/919426436529?text=${encodeURIComponent(whatsappMessage)}`;
+        }
+
+        function redirectToWhatsApp(url) {
+            window.location.href = url;
+        }
 
         // AJAX Form Submission
         const contactForm = document.getElementById('contactForm');
@@ -1178,6 +1432,12 @@
                 formStatus.innerHTML = '<span style="color: #64748b;"><i class="fa-solid fa-spinner fa-spin"></i> Sending message...</span>';
                 const formData = new FormData(contactForm);
                 const data = Object.fromEntries(formData.entries());
+                const whatsappFallbackUrl = buildWhatsAppUrl(
+                    data.product || 'your products',
+                    data.name || 'Not provided',
+                    data.phone || 'Not provided',
+                    data.message || 'Not provided'
+                );
 
                 try {
                     // Using FormSubmit.co to bypass the need for a local PHP server
@@ -1196,12 +1456,116 @@
                         formStatus.innerHTML = `<span style="color: #15803d;"><i class="fa-solid fa-circle-check"></i> Thank you! Your inquiry has been submitted. (Note: Please check your email to activate the form for the first time).</span>`;
                         contactForm.reset();
                     } else {
-                        formStatus.innerHTML = `<span style="color: #b91c1c;"><i class="fa-solid fa-circle-exclamation"></i> ${result.message || "Something went wrong."}</span>`;
+                        formStatus.innerHTML = `<span style="color: #b91c1c;"><i class="fa-solid fa-circle-exclamation"></i> ${result.message || "Something went wrong."} Redirecting to WhatsApp instead.</span>`;
+                        window.setTimeout(() => {
+                            redirectToWhatsApp(whatsappFallbackUrl);
+                        }, 600);
                     }
                 } catch (error) {
-                    formStatus.innerHTML = `<span style="color: #b91c1c;"><i class="fa-solid fa-triangle-exclamation"></i> Could not connect to server. Error: ${error.message}</span>`;
+                    formStatus.innerHTML = `<span style="color: #b91c1c;"><i class="fa-solid fa-triangle-exclamation"></i> Could not connect to server. Redirecting to WhatsApp instead.</span>`;
                     console.error('Submission Error:', error);
+                    window.setTimeout(() => {
+                        redirectToWhatsApp(whatsappFallbackUrl);
+                    }, 600);
                 }
+            });
+        }
+
+        // Gallery and collection inquiry modal
+        const inquiryTriggers = document.querySelectorAll('.inquiry-trigger');
+        const inquiryModal = document.getElementById('inquiryModal');
+        const inquiryForm = document.getElementById('inquiryForm');
+        const inquiryProduct = document.getElementById('inquiryProduct');
+        const inquiryName = document.getElementById('inquiryName');
+        const inquiryPhone = document.getElementById('inquiryPhone');
+        const inquiryMessage = document.getElementById('inquiryMessage');
+        const modalProductName = document.getElementById('modalProductName');
+        const modalFormStatus = document.getElementById('modalFormStatus');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        let lastFocusedTrigger = null;
+
+        if (inquiryModal && inquiryForm && inquiryProduct && inquiryName && inquiryPhone && inquiryMessage && modalProductName && modalFormStatus && modalCloseBtn) {
+            function setModalStatus(message, type = '') {
+                modalFormStatus.textContent = message;
+                modalFormStatus.style.color = type === 'error' ? '#b91c1c' : '#15803d';
+            }
+
+            function openInquiryModal(productName, triggerElement) {
+                lastFocusedTrigger = triggerElement || null;
+                inquiryProduct.value = productName;
+                modalProductName.textContent = productName;
+                modalFormStatus.textContent = '';
+                inquiryModal.classList.add('active');
+                inquiryModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                window.setTimeout(() => inquiryName.focus(), 120);
+            }
+
+            function closeInquiryModal() {
+                inquiryModal.classList.remove('active');
+                inquiryModal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('modal-open');
+                modalFormStatus.textContent = '';
+                inquiryForm.reset();
+                if (lastFocusedTrigger) {
+                    lastFocusedTrigger.focus();
+                }
+            }
+
+            inquiryTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const productName = trigger.dataset.product || 'Selected Product';
+                    openInquiryModal(productName, trigger);
+                });
+
+                trigger.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        const productName = trigger.dataset.product || 'Selected Product';
+                        openInquiryModal(productName, trigger);
+                    }
+                });
+            });
+
+            modalCloseBtn.addEventListener('click', closeInquiryModal);
+
+            inquiryModal.addEventListener('click', (event) => {
+                if (event.target.dataset.closeModal === 'true' || event.target === inquiryModal) {
+                    closeInquiryModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && inquiryModal.classList.contains('active')) {
+                    closeInquiryModal();
+                }
+            });
+
+            inquiryForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const productName = inquiryProduct.value.trim();
+                const name = inquiryName.value.trim();
+                const phone = inquiryPhone.value.trim();
+                const message = inquiryMessage.value.trim();
+
+                if (!name || !phone) {
+                    setModalStatus('Please enter your name and phone number.', 'error');
+                    if (!name) {
+                        inquiryName.focus();
+                    } else {
+                        inquiryPhone.focus();
+                    }
+                    return;
+                }
+
+                const whatsappUrl = buildWhatsAppUrl(productName, name, phone, message);
+
+                setModalStatus('Opening WhatsApp...');
+                window.setTimeout(() => {
+                    closeInquiryModal();
+                    redirectToWhatsApp(whatsappUrl);
+                }, 250);
             });
         }
     </script>
